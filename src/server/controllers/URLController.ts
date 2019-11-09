@@ -52,8 +52,8 @@ export default class URLController extends BaseController {
 
     private async update(req: Request, res: Response): Promise<Response | void> {
         if (req.query.token !== process.env.TOKEN) return res.status(401).send({ code: 401, message: `Unauthorized` });
-		const existing = this.app.settings!.link.find(u => u.short === req.params.short);
-		const { long, short } = req.body;
+        const { long, short } = req.body;
+		const existing = this.app.settings!.link.find(u => u.short === short);
 		if (!long) return res.status(409).send({ code: 409, message: 'Invalid "long" in request body' });
 		if (!short || !existing) return res.status(409).send({ code: 409, message: 'Short URL not found' });
 		const doc = await this.app!.settings!.set('link', { _id: existing._id }, { long, short });
