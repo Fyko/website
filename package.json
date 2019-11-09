@@ -3,12 +3,13 @@
     "version": "0.0.1",
     "description": "my personal website and API files",
     "private": true,
+    "license": "MIT",
     "author": {
         "name": "Carter Himmel",
         "email": "fyko@sycer.dev"
     },
     "contributors": [
-        "Shaybox (https://shaybox.com)"
+        "Shayne Hartfort (https://shaybox.com)"
     ],
     "main": "build/index.js",
     "dependencies": {
