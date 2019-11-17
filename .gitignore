@@ -68,3 +68,8 @@ dist/
 # editor configurations
 .vscode/
 .idea/
+
+# test files
+*.test
+test
+tests
