@@ -22,9 +22,10 @@ export default class TranscriptController extends BaseController {
                 code: 409,
                 error: 'Invalid "URI" supplied.'
             });
-            const { text } = await fetch(uri);
+            const get = await fetch(uri);
+            const text = await get.text();
             res.set('Content-Type', 'text/html');
-            return res.send(Buffer.from(await text()));
+            return res.send(Buffer.from(text));
         } catch {
             return res.render('404.ejs', {
                 code: 500,
