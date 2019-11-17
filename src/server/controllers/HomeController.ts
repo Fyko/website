@@ -25,7 +25,7 @@ export default class HomeController extends BaseController {
         const doc = this.app.settings.link.find(e => e.short === code);
 		if (!doc) return res.render('404.ejs', {
             code: 404,
-            error: 'Short URL not found'
+            error: 'Page not found'
         });
 		const visits = doc!.visits + 1;
         this.app.settings!.set('link', { _id: doc._id }, { visits });
