@@ -28,7 +28,7 @@ export default class TeamTreesController extends BaseController {
             const top = await this.api.getMostTrees() as any[];
             const recent = await this.api.getMostRecent() as any[];
     
-            return res.status(200).send(JSON.stringify({ total, top, recent }));
+            return res.status(200).send({ total, top, recent });
         } catch (err) {
             return res.status(500).send({ error: `${err}` });
         }
