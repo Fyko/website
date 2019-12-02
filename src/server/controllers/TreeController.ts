@@ -22,12 +22,9 @@ export default class TeamTreesController extends BaseController {
 
     private async gatherTreesData(req: Request, res: Response): Promise<Response | void> {
         try {
-            const _data = { };
-
             const total = await this.api.getTotalTrees();
             const top = await this.api.getMostTrees() as any[];
             const recent = await this.api.getMostRecent() as any[];
-    
             return res.status(200).send({ total, top, recent });
         } catch (err) {
             return res.status(500).send({ error: `${err}` });
