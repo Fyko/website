@@ -34,7 +34,7 @@ export default class TeamTreesController extends BaseController {
             const data = await get.text();
     
             const _totalMatch = data.match(/<div id="totalTrees" class="counter" data-count="\d+">/g);
-            if (_totalMatch?.length) _data.total = parseInt(_totalMatch[0], 10);
+            if (_totalMatch?.length) _data.total = parseInt(_totalMatch[0].match(/\d+/g)![0], 10);
     
             const _topMatch = data.match(/<div class="media pt-3" data-trees-top="(\d+)">(.*?)<\/div>/gms);
             if  (_topMatch?.length) {
