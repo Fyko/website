@@ -1,11 +1,14 @@
-import RootController from './HomeController';
-import URLController from './URLController';
 import BotController from './BotController';
+import RootController from './HomeController';
 import TranscriptController from './TranscriptController';
+import TeamTreesController from './TreeController';
+import URLController from './URLController';
 
 export default [
-    TranscriptController,
-    URLController,
     BotController,
-    RootController
+    RootController,
+    TranscriptController,
+    TeamTreesController,
+    URLController,
+    RootController,
 ];
