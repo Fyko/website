@@ -33,13 +33,13 @@ export default class TeamTreesController extends BaseController {
             const get = await fetch('https://teamtrees.org/');
             const data = await get.text();
     
-            const _totalMatch = data.match(/<div id="totalTrees" class=".*?" data-count="([0-9]*)">[0-9]*?<\/div>/);
-            if (_totalMatch) _data.total = parseInt(_totalMatch[0], 10);
+            const _totalMatch = data.match(/<div id="totalTrees" class="counter" data-count="\d+">/g);
+            if (_totalMatch?.length) _data.total = parseInt(_totalMatch[0], 10);
     
             const _topMatch = data.match(/<div class="media pt-3" data-trees-top="(\d+)">(.*?)<\/div>/gms);
             if  (_topMatch?.length) {
                 _data.top = _topMatch.reduce((pre: User[], val, i: number): User[] => {
-                    const _user = this._parseUser(val, i);
+                    const _user = this._parseUser(val, i, true);
                     pre.push(_user);
                     return pre;
                 }, []);
@@ -71,7 +71,7 @@ export default class TeamTreesController extends BaseController {
             amount: parseInt(amount, 10),
             message,
             timestamp: new Date(date).getTime(),
-            image,
+            image:  `https://teamtrees.org/${image}`,
             top: top ? i + 1 : null
         };
     }
