@@ -18,7 +18,7 @@ interface TeamTreesResponse {
     recent?: User[];
 }
 
-export default class TeamTrees extends BaseController {
+export default class TeamTreesController extends BaseController {
     public constructor(app: App) {
         super('/teamtrees', app);
     }

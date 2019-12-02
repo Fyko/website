@@ -6,7 +6,6 @@ import URLController from './URLController';
 
 export default [
     BotController,
-    RootController,
     TranscriptController,
     TeamTreesController,
     URLController,
