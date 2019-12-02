@@ -2,25 +2,18 @@ import { Request, Response } from 'express';
 import fetch from 'node-fetch';
 import App from '../classes/App';
 import BaseController from './BaseController';
-
-interface User {
-    name: string;
-    amount: number;
-    message: string;
-    timestamp: number;
-    image: string;
-    top: number | null;
-}
-
-interface TeamTreesResponse {
-    total?: number;
-    top?: User[];
-    recent?: User[];
-}
+import { TeamTrees } from 'teamtrees-api';
 
 export default class TeamTreesController extends BaseController {
+    public api: TeamTrees;
     public constructor(app: App) {
         super('/teamtrees', app);
+        this.api = new TeamTrees({
+            cache: {
+                enable: true,
+                duration: 1
+            },
+        });
     }
 
     public init(): void {
@@ -29,32 +22,13 @@ export default class TeamTreesController extends BaseController {
 
     private async gatherTreesData(req: Request, res: Response): Promise<Response | void> {
         try {
-            const _data: TeamTreesResponse = { };
-            const get = await fetch('https://teamtrees.org/');
-            const data = await get.text();
+            const _data = { };
+
+            const total = await this.api.getTotalTrees();
+            const top = await this.api.getMostTrees() as any[];
+            const recent = await this.api.getMostRecent() as any[];
     
-            const _totalMatch = data.match(/<div id="totalTrees" class="counter" data-count="\d+">/g);
-            if (_totalMatch?.length) _data.total = parseInt(_totalMatch[0].match(/\d+/g)![0], 10);
-    
-            const _topMatch = data.match(/<div class="media pt-3" data-trees-top="(\d+)">(.*?)<\/div>/gms);
-            if  (_topMatch?.length) {
-                _data.top = _topMatch.reduce((pre: User[], val, i: number): User[] => {
-                    const _user = this._parseUser(val, i, true);
-                    pre.push(_user);
-                    return pre;
-                }, []);
-            }
-    
-            const _recentMatch  = data.match(/<div class="media pt-3">(.*?)<\/div>/gms);
-            if  (_recentMatch?.length) {
-                _data.recent = _recentMatch.reduce((pre: User[], val: string, i: number): User[] => {
-                    const _user = this._parseUser(val, i);
-                    pre.push(_user);
-                    return pre;
-                }, []);
-            };
-    
-            return res.status(200).send(_data);
+            return res.status(200).send(JSON.stringify({ total, top, recent }));
         } catch (err) {
             return res.status(500).send({ error: `${err}` });
         }

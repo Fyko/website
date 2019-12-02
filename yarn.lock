@@ -1834,6 +1834,12 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
+teamtrees-api@Jacxk/TeamTrees-API:
+  version "1.2.0"
+  resolved "https://codeload.github.com/Jacxk/TeamTrees-API/tar.gz/f3e6ae0df7b632624c15ab0be5639bb06639cea3"
+  dependencies:
+    node-fetch "^2.6.0"
+
 text-hex@1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/text-hex/-/text-hex-1.0.0.tgz#69dc9c1b17446ee79a92bf5b884bb4b9127506f5"

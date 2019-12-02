@@ -23,6 +23,7 @@
         "moment-timezone": "^0.5.26",
         "mongoose": "^5.7.1",
         "node-fetch": "^2.6.0",
+        "teamtrees-api": "Jacxk/TeamTrees-API",
         "winston": "^3.2.1"
     },
     "devDependencies": {
