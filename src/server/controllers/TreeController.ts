@@ -33,20 +33,4 @@ export default class TeamTreesController extends BaseController {
             return res.status(500).send({ error: `${err}` });
         }
     }
-
-    private _parseUser(user: string, i: number, top = false): User {
-        const name = user.match(/<strong.*?>(.*?)<\/strong>/m)![1];
-        const amount = user.match(/<span.*?class="(feed-tree-count.*)">(.*) tree.*<\/span>/m)![1];
-        const message = user.match(/<span.*?class="((?!feed-datetime|feed-tree-count).)*">(.*?)<\/span>/m)![2];
-        const date = user.match(/<span.*?>(.*(\d+:\d+:\d+).*)<\/span>/m)![1];
-        const image = user.match(/<img.*?src="(.*?)">/m)![1];
-        return {
-            name,
-            amount: parseInt(amount, 10),
-            message,
-            timestamp: new Date(date).getTime(),
-            image:  `https://teamtrees.org/${image}`,
-            top: top ? i + 1 : null
-        };
-    }
 }
