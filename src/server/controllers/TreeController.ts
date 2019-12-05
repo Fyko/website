@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import fetch from 'node-fetch';
 import App from '../classes/App';
 import BaseController from './BaseController';
 import { TeamTrees } from 'teamtrees-api';

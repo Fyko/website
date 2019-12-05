@@ -3,7 +3,7 @@ html,
 body {
     height: 100%;
     color: #FFFFFF;
-    background-color: #745c97;
+    background-color: linear-gradient(to left bottom, #2f7336, #596b15, #7b5f03, #974e18, #aa3a38);
     font-family: dm;
     font-size: 1.1em;
     line-height: 1.75em;
