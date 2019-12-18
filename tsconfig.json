@@ -24,7 +24,7 @@
 		"target": "es2019"
 	},
 	"exclude": [
-		"node_modules", "_plans/otto"
+		"node_modules",
 	],
 	"include": [
 		"src",
