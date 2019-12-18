@@ -46,16 +46,12 @@ a {
     animation-iteration-count: infinite;
 }
 
-.btn {
-    border-radius: 50%;
-}
-
 @-webkit-keyframes mover {
     0% {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 }
 
@@ -64,7 +60,7 @@ a {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 }
 
