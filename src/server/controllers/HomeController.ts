@@ -9,11 +9,16 @@ export default class HomeController extends BaseController {
 
     public init(): void {
         this.router.get('/', this.displayRoot.bind(this));
+        this.router.get('/free-nitro', this.displayNitro.bind(this));
 		this.router.get('/:code', (req: Request, res: Response, next: NextFunction) => {
             if (req.params.code === 's') return res.redirect('/s/showall');
             return next();
         }, this.redirect.bind(this));
         this.router.get('*', this.send404.bind(this));
+    }
+
+    private displayNitro(_: Request, res: Response): void {
+        return res.render('nitro.html');
     }
 
     private displayRoot(_: Request, res: Response): void {

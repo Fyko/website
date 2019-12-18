@@ -1,11 +1,13 @@
 @import url("https://dank.sh/static/dmvendor.css");
 html,
 body {
+    height: 100%;
     color: #FFFFFF;
     background-image: linear-gradient(to right top, #4e54c8, #5f64d5, #6f73e2, #7f84ee, #8f94fb);
     font-family: dm;
     font-size: 1.1em;
     line-height: 1.75em;
+    overflow: hidden;
 }
 
 h1 {
