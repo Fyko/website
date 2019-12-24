@@ -8,7 +8,7 @@ export default class ToolsController extends BaseController {
 	}
 
 	public init(): void {
-		this.router.get('/fees/:AMOUNT', this._translateFeeds.bind(this));
+		this.router.get('/fees/:amount', this._translateFeeds.bind(this));
 	}
 
 	private async _translateFeeds(req: Request, res: Response): Promise<Response | void> {
