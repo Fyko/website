@@ -2,19 +2,19 @@ import { Router } from 'express';
 import App from '../classes/App';
 
 export default class BaseController {
-    public path: string;
-    public router: Router;
-    public app: App;
+	public path: string;
+	public router: Router;
+	public app: App;
 
-    public constructor(path: string, app: App) {
-        this.path = path;
-        this.router = Router();
-        this.app = app;
+	public constructor(path: string, app: App) {
+		this.path = path;
+		this.router = Router();
+		this.app = app;
 
-        this.init();
-    }
+		this.init();
+	}
 
-    public init(): void {
-        throw new Error(`init() not implemented on ${this.path}`);
-    }
+	public init(): void {
+		throw new Error(`init() not implemented on ${this.path}`);
+	}
 }

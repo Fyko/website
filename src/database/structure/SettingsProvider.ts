@@ -75,7 +75,7 @@ export default class SettingsProvider {
 		const collection = this[type];
 		const items = await model.find();
 		for (const i of items) collection.set(i.id, i);
-		return i += items.length;
+		return (i += items.length);
 	}
 
 	/* connecting */
@@ -86,7 +86,7 @@ export default class SettingsProvider {
 				await connect(url, {
 					useCreateIndex: true,
 					useNewUrlParser: true,
-					useFindAndModify: false
+					useFindAndModify: false,
 				});
 			} catch (err) {
 				this.app.logger.error(`[SETTINGS] Error when connecting to MongoDB:\n${err.stack}`);

@@ -7,19 +7,22 @@ export interface Link extends Document {
 	createdAt: Date;
 }
 
-const Link: Schema = new Schema({
-	short: String,
-	long: String,
-	visits: {
-		type: Number,
-		default: 0
+const Link: Schema = new Schema(
+	{
+		short: String,
+		long: String,
+		visits: {
+			type: Number,
+			default: 0,
+		},
+		createdAt: {
+			type: Date,
+			default: new Date(),
+		},
 	},
-	createdAt: {
-		type: Date,
-		default: new Date()
-	}
-}, {
-	strict: false
-});
+	{
+		strict: false,
+	},
+);
 
 export default model<Link>('Link', Link);

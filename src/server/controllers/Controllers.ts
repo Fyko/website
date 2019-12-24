@@ -4,10 +4,4 @@ import TranscriptController from './TranscriptController';
 import TeamTreesController from './TreeController';
 import URLController from './URLController';
 
-export default [
-    BotController,
-    TranscriptController,
-    TeamTreesController,
-    URLController,
-    RootController,
-];
+export default [BotController, TranscriptController, TeamTreesController, URLController, RootController];
