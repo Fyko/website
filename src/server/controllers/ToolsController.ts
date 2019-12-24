@@ -19,7 +19,7 @@ export default class ToolsController extends BaseController {
 
 			return res.status(200).send({
 				code: 200,
-				message: JSON.stringify({
+				message: {
 					paypal: this.makeFee(num, 0.029, 0.3),
 					ebay: this.makeFee(num, 0.129),
 					goat: this.makeFee(num, 0.095, 5),
@@ -30,7 +30,7 @@ export default class ToolsController extends BaseController {
 						3: this.makeFee(num, 0.085),
 						4: this.makeFee(num, 0.08),
 					},
-				}),
+				},
 			});
 		} catch {
 			return res.status(500).send({ code: 500, error: 'Internal server error.' });
