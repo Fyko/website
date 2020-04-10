@@ -2,14 +2,7 @@ import BotController from './BotController';
 import RootController from './HomeController';
 import ToolsController from './ToolsController';
 import TranscriptController from './TranscriptController';
-import TeamTreesController from './TreeController';
 import URLController from './URLController';
+import AmazonController from './AmazonController';
 
-export default [
-	BotController,
-	ToolsController,
-	TranscriptController,
-	TeamTreesController,
-	URLController,
-	RootController,
-];
+export default [AmazonController, BotController, ToolsController, TranscriptController, URLController, RootController];
