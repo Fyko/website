@@ -12,6 +12,6 @@ export default class AmazonController extends BaseController {
 	}
 
 	private redirect(req: Request, res: Response): Response | void {
-		return res.redirect(`${req.protocol}amzn.com/${req.params.data}`);
+		return res.redirect(`https://amzn.com/${req.params.data}`);
 	}
 }
