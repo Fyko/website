@@ -17,13 +17,13 @@ export default class TranscriptController extends BaseController {
 	private async showTranscript(req: Request, res: Response): Promise<Response | void> {
 		try {
 			const { uri } = req.query;
-			const match = uri ? HTMLREGEX.test(uri) : null;
+			const match = uri ? HTMLREGEX.test(`${uri}`) : null;
 			if (!uri || !match)
 				return res.render('404.ejs', {
 					code: 409,
 					error: 'Invalid "URI" supplied.',
 				});
-			const get = await fetch(uri);
+			const get = await fetch(`${uri}`);
 			const text = await get.text();
 			res.set('Content-Type', 'text/html');
 			return res.send(Buffer.from(text));
