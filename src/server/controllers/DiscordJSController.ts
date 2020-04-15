@@ -3,7 +3,7 @@ import App from '../classes/App';
 import { Request, Response } from 'express';
 import { stripIndents } from 'common-tags';
 
-export default class AmazonController extends BaseController {
+export default class DiscordJSController extends BaseController {
 	public constructor(app: App) {
 		super('/djs', app);
 	}
