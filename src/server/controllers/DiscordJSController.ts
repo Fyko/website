@@ -50,7 +50,7 @@ export default class DiscordJSController extends BaseController {
 		const url = q
 			? `https://discord.js.org/#/docs/main/stable/search?q=${encodeURIComponent((q as string).replace('.', '#'))}`
 			: `https://discord.js.org/#/docs/main/${b ?? 'stable'}/${c ? 'class' : 'typedef'}/${c ?? t}${
-					c ? `scrollTo?${e ? 'e-' : ''}${p}` : ''
+					c ? `?scrollTo=${e ? 'e-' : ''}${p}` : ''
 			  }`;
 		return res.redirect(url);
 	}
