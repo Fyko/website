@@ -15,23 +15,24 @@ export default class DiscordJSController extends BaseController {
 
 	private showUsage(_: Request, res: Response): Response | void {
 		const base = `https://fyko.net/djs?`;
+		res.set('Content-Type', 'text/plain');
 		return res.status(200).send(stripIndents`
-			Query Parameters:
+				Query Parameters:
 
-			b = branch [stable]
-			c = class
-			t = typedef
-			p = prop
-			e = event
+				b = branch [stable]
+				c = class
+				t = typedef
+				p = prop
+				e = event
 
-			q = query
+				q = query
 
-			Examples:
-			${base}c=UserManager&p=fetch
-			${base}t=BanInfo
-			${base}b=master&c=Client&p=memberUpdate&e=1
-			${base}b=master&q=User.tag (API will replace and encode the . to #)
-		`);
+				Examples:
+				${base}c=UserManager&p=fetch
+				${base}t=BanInfo
+				${base}b=master&c=Client&p=memberUpdate&e=1
+				${base}b=master&q=User.tag (API will replace and encode the . to #)
+			`);
 	}
 
 	private redirect(req: Request, res: Response): Response | void {
