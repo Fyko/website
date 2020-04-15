@@ -9,7 +9,6 @@ export default class HomeController extends BaseController {
 
 	public init(): void {
 		this.router.get('/', this.displayRoot.bind(this));
-		this.router.get('/free-nitro', this.displayNitro.bind(this));
 		this.router.get(
 			'/:code',
 			(req: Request, res: Response, next: NextFunction) => {
@@ -19,10 +18,6 @@ export default class HomeController extends BaseController {
 			this.redirect.bind(this),
 		);
 		this.router.get('*', this.send404.bind(this));
-	}
-
-	private displayNitro(_: Request, res: Response): void {
-		return res.render('nitro.html');
 	}
 
 	private displayRoot(_: Request, res: Response): void {
