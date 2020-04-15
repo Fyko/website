@@ -46,11 +46,11 @@ export default class DiscordJSController extends BaseController {
 
 			q = query
 		*/
-		const { b, c, t, p, q, e } = req.params;
+		const { b, c, t, p, e, q } = req.query;
 		const url = q
-			? `https://discord.js.org/#/docs/main/stable/search?q=${encodeURIComponent(q.replace('.', '#'))}`
-			: `https://discord.js.org/#/docs/main/${b ?? 'stable'}/${c ? 'class' : 'typedef'}/${c ? c : t}${
-					c ? `scrollTo?${e ? 'e' : ''}${p}` : ''
+			? `https://discord.js.org/#/docs/main/stable/search?q=${encodeURIComponent((q as string).replace('.', '#'))}`
+			: `https://discord.js.org/#/docs/main/${b ?? 'stable'}/${c ? 'class' : 'typedef'}/${c ?? t}${
+					c ? `scrollTo?${e ? 'e-' : ''}${p}` : ''
 			  }`;
 		return res.redirect(url);
 	}
