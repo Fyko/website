@@ -1,6 +1,6 @@
 import BaseController from './BaseController';
-import App from '../classes/App';
-import { Request, Response } from 'express';
+import type App from '../structures/App';
+import type { Request, Response } from 'express';
 import { stripIndents } from 'common-tags';
 
 export default class DiscordJSController extends BaseController {

@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - ./views:/usr/website/views
+    ports:
+      - 6635:6635
+
+  postgres:
+    image: postgres:13-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: fyko
+      POSTGRES_PASSWORD: doctordoctor
+      POSTGRES_DB: website
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:

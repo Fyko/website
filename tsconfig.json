@@ -1,33 +1,20 @@
 {
 	"compileOnSave": true,
 	"compilerOptions": {
-		"allowJs": true,
-		"allowUnreachableCode": true,
-		"allowUnusedLabels": true,
-		"checkJs": false,
-		"downlevelIteration": true,
-		"emitDecoratorMetadata": true,
-		"esModuleInterop": true,
-		"experimentalDecorators": true,
-		"forceConsistentCasingInFileNames": true,
-		"importHelpers": true,
+		"alwaysStrict": true,
+		"lib": ["esnext"],
 		"module": "commonjs",
-		"moduleResolution": "node",
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": true,
-		"outDir": "build",
-		"removeComments": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
+		"noUnusedParameters": true,
+		"outDir": "dist",
 		"sourceMap": true,
-		"strict": true,
-		"target": "es2019"
+		"noUnusedLocals": true,
+		"removeComments": false,
+		"target": "ES2020",
+		"importsNotUsedAsValues": "error",
+		"strictNullChecks": true,
+		"preserveConstEnums": true,
+		"esModuleInterop": true
 	},
-	"exclude": [
-		"node_modules",
-	],
-	"include": [
-		"src",
-		"typings"
-	]
+	"include": ["src"],
+	"exclude": ["node_modules", "public"]
 }

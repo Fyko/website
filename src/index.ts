@@ -1,8 +1,4 @@
-import { config } from 'dotenv';
-import { resolve } from 'path';
-config({ path: resolve(__dirname, '..', '.env') });
-
-import App from './server/classes/App';
+import App from './structures/App';
 
 (async () => {
 	const app = new App();

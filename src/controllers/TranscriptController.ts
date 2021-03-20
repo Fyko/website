@@ -1,6 +1,6 @@
 import BaseController from './BaseController';
-import App from '../classes/App';
-import { Request, Response } from 'express';
+import type App from '../structures/App';
+import type { Request, Response } from 'express';
 import fetch from 'node-fetch';
 
 const HTMLREGEX = /https?:\/\/cdn.discordapp.com\/attachments\/\d{17,19}\/\d{17,19}\/.*?.(?:html)/;

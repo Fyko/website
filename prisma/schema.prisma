@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Link {
+  id     String @id @default(uuid())
+  short  String
+  long   String
+  visits Int    @default(0)
+
+  /// the date this row was created
+  created_at DateTime @default(now())
+  /// the date this row was last updated
+  updated_at DateTime @updatedAt
+
+  @@map("links")
+}

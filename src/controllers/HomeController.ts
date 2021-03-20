@@ -1,6 +1,6 @@
 import BaseController from './BaseController';
-import App from '../classes/App';
-import { Request, Response, NextFunction } from 'express';
+import type App from '../structures/App';
+import type { Request, Response, NextFunction } from 'express';
 
 export default class HomeController extends BaseController {
 	public constructor(app: App) {
@@ -24,18 +24,28 @@ export default class HomeController extends BaseController {
 		return res.render('index.html');
 	}
 
-	private redirect(req: Request, res: Response): void {
+	private async redirect(req: Request, res: Response): Promise<void> {
 		const code = req.params.code;
-		const doc = this.app.settings.link.find(e => e.short === code);
+
+		const doc = await this.app.prisma.link.findFirst({ where: { short: code } });
 		if (!doc)
 			return res.render('404.ejs', {
 				code: 404,
 				error: 'Page not found',
 			});
+
 		const visits = doc.visits + 1;
-		this.app.settings.set('link', { _id: doc._id }, { visits });
+		void this.app.prisma.link.update({
+			where: {
+				id: doc.id,
+			},
+			data: {
+				visits,
+			},
+		});
+
 		this.app.logger.verbose(`[REDIRECT] ${doc.short}`);
-		return res.redirect(`${doc.long}`);
+		return res.redirect(doc.long);
 	}
 
 	private send404(_: Request, res: Response): void {

@@ -1,6 +1,6 @@
 import BaseController from './BaseController';
-import App from '../classes/App';
-import { Request, Response } from 'express';
+import type App from '../structures/App';
+import type { Request, Response } from 'express';
 
 export default class ToolsController extends BaseController {
 	public constructor(app: App) {
@@ -11,7 +11,7 @@ export default class ToolsController extends BaseController {
 		this.router.get('/fees/:amount', this._translateFeeds.bind(this));
 	}
 
-	private async _translateFeeds(req: Request, res: Response): Promise<Response | void> {
+	private _translateFeeds(req: Request, res: Response): Response {
 		try {
 			const { amount } = req.params;
 			if (!amount) return res.status(409).send({ code: 409, message: 'No AMOUNT param provided - /fees/:AMOUNT' });

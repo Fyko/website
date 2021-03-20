@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import App from '../classes/App';
+import type App from '../structures/App';
 
 export default class BaseController {
 	public path: string;
