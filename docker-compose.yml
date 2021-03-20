@@ -22,7 +22,7 @@ services:
       POSTGRES_PASSWORD: doctordoctor
       POSTGRES_DB: website
     healthcheck:
-      test: ["CMD_SHELL", "pg_isready -u postgres"]
+      test: ["CMD-SHELL", "pg_isready -u postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
