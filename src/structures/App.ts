@@ -22,7 +22,6 @@ export default class App {
 			.use(urlencoded({ extended: true }))
 			// @ts-ignore
 			.engine('html', renderFile) // eslint-disable-line @typescript-eslint/no-misused-promises
-			.use(helmet())
 			.use(express.static(staticURL))
 			.set('view engine', 'ejs')
 			.set('views', join(process.cwd(), 'views'))
