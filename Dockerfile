@@ -10,7 +10,6 @@ RUN yarn run build
 RUN npm prune --production
 RUN /usr/local/bin/node-prune
 
-
 FROM node:15-alpine
 EXPOSE 6635
 
