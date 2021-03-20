@@ -18,7 +18,7 @@ export default class App {
 		const staticURL = join(process.cwd(), 'public');
 		this.app
 			.use(json())
-			.use(helmet())
+			.use(helmet({ contentSecurityPolicy: false }))
 			.use(urlencoded({ extended: true }))
 			// @ts-ignore
 			.engine('html', renderFile) // eslint-disable-line @typescript-eslint/no-misused-promises
