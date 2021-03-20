@@ -21,8 +21,6 @@ services:
       POSTGRES_USER: fyko
       POSTGRES_PASSWORD: doctordoctor
       POSTGRES_DB: website
-    ports:
-      - 5432:5432
 
 volumes:
   postgres_data:
