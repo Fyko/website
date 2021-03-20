@@ -21,6 +21,11 @@ services:
       POSTGRES_USER: fyko
       POSTGRES_PASSWORD: doctordoctor
       POSTGRES_DB: website
+    healthcheck:
+      test: ["CMD_SHELL", "pg_isready -u postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
